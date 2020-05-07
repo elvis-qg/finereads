@@ -2,6 +2,7 @@
   display: grid;
   gap: 1em;
   grid-template-columns: 1fr;
+  margin-top: 40px;
 }
 
 .card-book {
@@ -60,12 +61,24 @@
 .book-details {
   display: grid;
   grid-template-columns: 1fr;
+  /* grid-template-areas:
+    "image"
+    "actions"
+    "description"
+    "buy"; */
   gap: 1em;
   justify-items: center;
 }
 
 .book-details__image {
   width: 50%;
+  /* grid-area: image; */
+}
+
+.book-details__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
 }
 
 .book-details__image img {
@@ -74,6 +87,7 @@
 
 .book-details__description {
   text-align: center;
+  /* grid-area: description; */
 }
 
 .book-details .title {
@@ -93,6 +107,33 @@
   margin: 0 auto;
   color: var(--text-general);
   line-height: 22px;
+}
+
+.book-details__link {
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  /* grid-area: buy; */
+}
+
+.book-details__link a {
+  padding: 5px 14px;
+  background-color: var(--color-green);
+  text-decoration: none;
+  color: #222;
+  line-height: 38px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  width: 70%;
+  display: inline-block;
+}
+
+.book-details__link a:hover {
+  background-color: var(--color-green-light);
+}
+
+.book-details__link img {
+  vertical-align: middle;
 }
 
 @media (min-width: 576px) {
@@ -135,6 +176,15 @@
   .book-details .author,
   .book-details .description {
     font-size: 15px;
+  }
+
+  .book-details__link {
+    text-align: right;
+  }
+
+  .book-details__link a {
+    padding: 6px 14px;
+    width: auto;
   }
 }
 

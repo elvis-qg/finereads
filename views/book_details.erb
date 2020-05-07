@@ -1,6 +1,9 @@
 <div class="book-details container">
   <div class="book-details__image">
     <img src="/images/book_2.jpg" alt="" />
+    <div class="book-details__actions">
+      <%= erb "_buttons_book".to_sym %>
+    </div>
   </div>
   <div class="book-details__description">
     <h3 class="title">
@@ -24,5 +27,11 @@
       skills to acquire on the path to growth, confidence, and believing in
       yourself.
     </p>
+    <div class="book-details__link">
+      <a href="">
+        Buy for 63.36 PEN
+        <img src="/images/shopping_cart.svg" alt="" />
+      </a>
+    </div>
   </div>
 </div>
