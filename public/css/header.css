@@ -40,7 +40,32 @@
 
 /* SEARCH FORM */
 .search-container{
-  width: 30%;
+  margin-top: 100px;
+  height: 120px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.search__label{
+  font-size: 24px;
+}
+.search-container div{
+  display: flex;
+  align-items: center;
+}
+.search__input{
+  width: 30em;
+  height: 40px;
+  padding: 0 1em;
+}
+.search__button{
+  width: 40px; height: 40px;
+  border: none;
+  background-color: var(--btn-color-primary);
+}
+.search__button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s;
 }
