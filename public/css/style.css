@@ -11,6 +11,20 @@
   --color-blue: #2b6cb0;
 }
 
+main {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 70px 1fr 70px;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+}
+
+.body {
+  grid-area: body;
+}
+
 * {
   margin: 0;
   padding: 0;
