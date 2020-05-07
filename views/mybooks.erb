@@ -1,0 +1,14 @@
+<div id="mybooks" class="container">
+  <h1 class="mybooks__title">My Books</h1>
+  <table class="mybooks__table">
+    <thead>
+      <th>cover</th><th>Title</th><th>Author</th><th>Status</th><th>Date Added</th><th></th>
+    </thead>
+    <tbody>
+    <% 10.times do %>
+      <%=erb :_mybook %>
+    <%end %>
+    </tbody>
+
+  </table>
+</div>

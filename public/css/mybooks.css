@@ -1,0 +1,29 @@
+.mybooks__table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.mybooks__title {
+    margin: 5vh 0;
+}
+
+.mybooks__table tr, td, th{
+    vertical-align: top;
+    border-bottom: 1px #000 solid;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(113, 128, 150, 0.8);
+}
+
+.mybooks__row__options {
+    border: none;
+}
+
+.mybooks__row__options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mybooks__row__option {
+    cursor: pointer;
+}
