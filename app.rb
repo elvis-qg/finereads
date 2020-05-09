@@ -1,4 +1,12 @@
 require 'sinatra'
+
+require "sinatra/reloader" if development?
+
+
+get "/" do 
+  erb :landing_page, :layout => false
+end
+
 require 'http'
 require_relative './models/book.rb'
 
@@ -60,3 +68,4 @@ end
 post "/books" do 
   erb :my_books
 end  
+
