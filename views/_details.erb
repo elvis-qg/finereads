@@ -1,0 +1,16 @@
+<head>
+    <link rel="stylesheet" href="/styles/details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+<div class="details-container">
+    <div class="details-imagenbook">
+        <img src="<%= @book_detail[3] %>" alt="ImageBook">  
+    </div>    
+    <div class="details-description">
+        <h1><%= @book_detail[0] %></h1>
+        <h3>by <%= @book_detail[1] %></h3>
+        <p><%= @book_detail[2] %></p>
+        <div class="details-button"><a class="details-button-a" href="<%= @book_detail[6] %>">Buy for <%= @book_detail[4] %> <%= @book_detail[5] %> <i class="fas fa-shopping-cart"></i></a></div>
+    </div>
+</div>
