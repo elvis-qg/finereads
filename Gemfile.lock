@@ -3,6 +3,7 @@ GEM
   specs:
     backports (3.17.1)
     json (2.3.0)
+    lazyrecord (0.0.2)
     multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -29,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   json (~> 2.3)
+  lazyrecord (~> 0.0.2)
   sinatra (~> 2.0)
   sinatra-contrib (~> 2.0)
 
