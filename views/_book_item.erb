@@ -1,0 +1,16 @@
+<% image_url = book[0][:image] %>
+<% title =  book[1][:titulo] %>
+<% authors = book[2][:author] %>
+<% status = book[3][:status] %>
+<% date_added = book[4][:date] %>
+<td class="table-books-cover"><%= image_url %></td>
+<td class="table-books-title"><%= title %></td>
+<td class="table-books-author"><%= authors %></td>
+<td class="table-books-status"><%= status %></td>
+<td class="table-books-date-added"><%= date_added %></td>
+<td class="table-books-icon"><a href="/edit_book?id=<% '#{id}' %>"><i class="fas fa-pencil-alt"></i></a></td>
+<td class="table-books-icon">
+  <form method="post" action="/books/aqui-deberia-ir-id/delete"> 
+    <button class="table-books-button-delete" type="submit"><i class="fas fa-trash-alt"></i></button>       
+  </form>
+</td>

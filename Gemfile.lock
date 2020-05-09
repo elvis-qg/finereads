@@ -34,10 +34,8 @@ PLATFORMS
 
 DEPENDENCIES
   json (~> 2.3)
-
   ruby
 
-DEPENDENCIES
   lazyrecord (~> 0.0.2)
 
   sinatra (~> 2.0)
