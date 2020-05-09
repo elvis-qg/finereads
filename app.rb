@@ -1,9 +1,11 @@
 require 'sinatra'
-require "sinatra/reloader" if development?
+
 
 require "lazyrecord"
 
 #use Rack::MethodOverride para poder activarlo  modifica un request antes de que lleguen a las rutas
+
+require "sinatra/reloader" if development?
 
 get "/" do 
   erb :landing_page, :layout => false
@@ -73,6 +75,7 @@ end
 =end
 
 
+
 require 'http'
 require_relative './models/book.rb'
 
@@ -134,3 +137,4 @@ end
 post "/books" do 
   erb :my_books
 end  
+
