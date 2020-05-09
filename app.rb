@@ -7,7 +7,7 @@ helpers do
   def request_volume(books)
     url = "https://www.googleapis.com/books/v1/volumes"
     query = "?q=#{books}"
-    endpoint = url + query + "&key=AIzaSyCyvT8NUJLqPH_umGd4PB_8s0a3TgQjwJA"
+    endpoint = url + query
     response = HTTP.headers(:accept => "application/json").get(endpoint).parse
     hash_results = {}
     items = response["items"]
@@ -45,7 +45,7 @@ get "/search" do
   erb :search
 end
 
-get "/books" do
+post "/books" do
   id = params["id"]
   status = params["status"]
   book_data = request_book(id)
@@ -57,6 +57,6 @@ get "/books" do
 end
 
 
-post "/books" do 
+get "/books" do 
   erb :my_books
 end  
