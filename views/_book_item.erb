@@ -1,18 +1,22 @@
 <% image_url = book.image_url %>
 <% title =  book.title %>
-<% authors = book.authors %>
-<% authors = authors.join(", ")%>
+<% if book.authors.nil? %>
+  <% authors = "Sin autor" %>
+<% else %>
+  <% authors = book.authors %>
+  <% authors = authors.join(", ")%>
+<% end %>
 <% status = book.status %>
 <% date_added = book.date_added %>
-<% id = book.id%>
+<% id = book.id %>
 <td class=><img src="<%= image_url%>" alt="---"></td>
 <td class="table-books-title"><%= title %></td>
 <td class="table-books-author"><%= authors %></td>
 <td class="table-books-status"><%= status %></td>
 <td class="table-books-date-added"><%= date_added %></td>
-<td class="table-books-icon"><a href="/edit?id=<%= "#{status}" %>"><i class="fas fa-pencil-alt"></i></a></td>
+<td class="table-books-icon"><a href="/edit?id=<%= "#{id}" %>"><i class="fas fa-pencil-alt"></i></a></td>
 <td class="table-books-icon">
-  <form method="post" action="/books/aqui-deberia-ir-id/delete"> 
+  <form method="post" action="/books/<%= id %>/delete"> 
     <button class="table-books-button-delete" type="submit"><i class="fas fa-trash-alt"></i></button>       
   </form>
 </td>

@@ -90,8 +90,8 @@ get "/create_books" do
 end
 
 post "/books/:id/delete" do
-  id = params[:id]
-  id = id.to_i
+  id = Book.find(params["id"])
+  p params["id"]
   Book.delete(id)
   redirect url("/books")
 end 
