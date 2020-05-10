@@ -3,14 +3,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Slab&display=swap" rel="stylesheet">
 </head>
+<% if @book_detail[1].nil? %>
+  <% authors = "Sin autor" %>
+<% else %>
+  <% authors = @book_detail[1] %>
+  <% authors = authors.join(", ")%>
+<% end %>
+<% if @book_detail[2].nil? %>
+  <% description = "Este libro no cuenta con una descripcion" %>
+<% else %>
+  <% description = @book_detail[2] %> 
+<% end %>
+ 
+  <% price = @book_detail[4] %>
+  <% currency = @book_detail[5] %>
+  <% buylink = @book_detail[6] %>
+  <% if price=="Sin precio" %>
+    <% pricing = price %>
+    <% cart = " " %>
+  <% else %> Buy for
+    <% pricing = "Buy for "+price+currency%>
+    <% cart = "fas fa-shopping-cart" %>
+  <% end %>
+
 <div class="details-container">
     <div class="details-imagenbook">
         <img src="<%= @book_detail[3] %>" alt="ImageBook">  
     </div>    
     <div class="details-description">
         <h1><%= @book_detail[0] %></h1>
-        <h3>by <%= @book_detail[1] %></h3>
-        <p><%= @book_detail[2] %></p>
-        <div class="details-button"><a class="details-button-a" href="<%= @book_detail[6] %>">Buy for <%= @book_detail[4] %> <%= @book_detail[5] %> <i class="fas fa-shopping-cart"></i></a></div>
+        <h3>by <%= authors %></h3>
+        <p><%= description %></p>
+        <div class="details-button"><a class="details-button-a" href="<%= buylink %>"><%= pricing %><i class=<%= cart %>></i></a></div>
     </div>
 </div>

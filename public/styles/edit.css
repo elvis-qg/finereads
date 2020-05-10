@@ -45,7 +45,7 @@ body {
   margin-bottom: 7px;
 }
 .edit-form select {
-  width: 122px;
+  width: 140px;
   height: 40px;
   background: #edf2f7;
   font-family: Nunito;
@@ -59,7 +59,7 @@ body {
   border-style: none;
   background-image: url(/images/flecha.svg);
   background-repeat: no-repeat;
-  background-position-x: 95px;
+  background-position-x: 120px;
   background-position-y: center;
   -webkit-appearance: none;
   -moz-appearance: none;
