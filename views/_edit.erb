@@ -3,11 +3,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Slab&display=swap" rel="stylesheet">
 </head>
+<% if @book.authors.nil? %>
+  <% authors = "Sin autor" %>
+<% else %>
+  <% authors = @book.authors %>
+  <% authors = authors.join(", ")%>
+<% end %>
+<% if @book.notes=="" %>
+  <% note = "write_your_note_here" %>
+<% else %>
+  <% note = @book.notes %>
+<% end %>
+<% id = @book.id %>
 <div class="edit-container"> 
+    <div class="edit-imagenbook">
+        <img src="<%= @book.image_url %>" alt="ImageBook">  
+    </div>  
     <div class="edit-description">       
         <h1><%= @book.title %></h1>
-        <h3>by <%= @book.authors %></h3>
-        <form method="GET" action="/books" class="edit-form">
+        <h3>by <%= authors %></h3>
+        <form method="GET" action="/books/<%= id %>/update" class="edit-form">
             <label for="status">Reading status</label><br>   
             <select id="status" name="status">
                 <option value="Reading">Reading</option>
@@ -15,7 +30,8 @@
                 <option value="Read">Read</option>
             </select><br> 
             <label for="subject">Notes</label><br>   
-            <textarea id="subject" name="subject" placeholder="Loved this book! It was life changing for me ❤️"></textarea>
+            <textarea id="subject" name="subject" placeholder=<%= note %>></textarea>
+            <input type="hidden" value="<%= @book.id %>">
             <input type="submit" value="Save">
     </form>
     </div>
