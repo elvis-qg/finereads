@@ -28,7 +28,7 @@ helpers do
     hash_results["title"] = response["volumeInfo"]["title"]
     hash_results["authors"] = response["volumeInfo"]["authors"]
     hash_results["despcription"] = response["volumeInfo"]["description"]
-    hash_results["img_url"] = response["volumeInfo"]["imageLinks"]["smallThumbnail"]
+    hash_results["image_url"] = response["volumeInfo"]["imageLinks"]["smallThumbnail"]
     availability = response["saleInfo"]["saleability"] 
     availability == "FOR SALE" ? hash_results["retail_price"] = response["saleInfo"]["listPrice"]["amount"] : hash_results["retailPrice"] = availability   
     hash_results 
@@ -69,10 +69,6 @@ get "/search" do
 end
 
 get "/books" do
-  #books = Book.all
-  #obtener id del libro
-  #id= params[:id]?
-  #@id_libro = Book.find(id)
   @books = Book.all 
   erb :books
 end
@@ -86,6 +82,7 @@ get "/create_books" do
   puts "casi"
   Book.all
   puts "llego"
+  puts book_data
   redirect url("/books")
 end
 
