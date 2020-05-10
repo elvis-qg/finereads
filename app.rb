@@ -1,8 +1,9 @@
-#use Rack::MethodOverride para poder activarlo  modifica un request antes de que lleguen a las rutas
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'http'
 require_relative './models/book.rb'
+
+use Rack::MethodOverride
 
 helpers do
   def request_volume(books)
@@ -43,11 +44,11 @@ helpers do
       book_title = response["volumeInfo"]["title"]
       book_author = response["volumeInfo"]["authors"].to_s
       book_description = response["volumeInfo"]["description"]
-      book_img = response["volumeInfo"]["imageLinks"]["thumbnail"]
+      book_img = response["volumeInfo"]["imageLinks"]["small"]
       #book_price = response["saleInfo"]["listPrice"]["amount"].to_s
       #book_currency = response["saleInfo"]["listPrice"]["currencyCode"]
       #book_buyLink = response["saleInfo"]["buyLink"]
-      #,book_price,book_currency,book_buyLink
+      #book_price,book_currency,book_buyLink
     array_results = [book_title, book_author,book_description,book_img]
     return array_results
   end
@@ -88,12 +89,12 @@ get "/create_books" do
   redirect url("/books")
 end
 
-post "/books/:id/delete" do
-  id = Book.find(params["id"])
-  p params["id"]
-  Book.delete(id)
+Rack::MethodOverride
+delete "/books/:id" do
+  Book.delete(params["id"])
   redirect url("/books")
 end 
+
 
 get "/details" do
   p params["id"]
@@ -108,24 +109,5 @@ get "/edit" do
   erb :_edit
 end
 
-
-
-=begin
-
-
-post "/books/:id/delete" do
-  id = params[:id]
-  id = id.to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-
-Rack::Override
-delete "/books/:id" do
-  id = params[:id].to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-=end
 
 
