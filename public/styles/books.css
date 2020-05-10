@@ -35,6 +35,11 @@ thead .table-books-status, thead .table-books-date-added{
   color: black;
 }
 
+.table-books-image img {
+  width: 70px;
+  height: 105px;
+}
+
 thead .table-books-cover{
   color: #2D3748;
 }
@@ -153,10 +158,3 @@ tbody .table-books-title{
   transform: scale(1.2);
 }
 
-
-/*
-    <form method="post" action="/books/<%= book.id %>/delete">action="/books/<%= book.id" %>
-    <input type="hidden" name="_method" value="DELETE">  Rack::MethodOverride permite agregar un input que contenga el nombre del method que se quiera utilizar
-    <button class="table-books-button-delete" type="submit"><i class="fas fa-trash-alt"></i></button>       
-  </form>
-*/

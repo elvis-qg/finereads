@@ -16,7 +16,8 @@
 <td class="table-books-date-added"><%= date_added %></td>
 <td class="table-books-icon"><a href="/edit?id=<%= "#{id}" %>"><i class="fas fa-pencil-alt"></i></a></td>
 <td class="table-books-icon">
-  <form method="post" action="/books/<%= id %>/delete"> 
+  <form method="post" action="/books/<%= id %>" >
+    <input type="hidden" name="_method" value="DELETE">
     <button class="table-books-button-delete" type="submit"><i class="fas fa-trash-alt"></i></button>       
   </form>
 </td>
