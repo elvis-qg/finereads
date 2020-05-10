@@ -104,3 +104,11 @@
   margin-top: 8px;
   text-decoration: none;
 }
+
+.fa-search{
+  font-size: 20px;
+  position: absolute;
+  top: 203px;
+  right: 453px;
+  pointer-events: none;
+}
