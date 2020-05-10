@@ -64,12 +64,18 @@
   justify-content: center;
 }
 
+.item-image-container {
+  width: 153px;
+  height: 230px;
+}
+
 .item__image {
   width: 153px;
   height: 230px;
 }
 
 .item__button {
+  margin-top: 12px;
   text-decoration: none;
 }
 
@@ -95,6 +101,6 @@
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  margin-top: 13px;
+  margin-top: 8px;
   text-decoration: none;
 }
