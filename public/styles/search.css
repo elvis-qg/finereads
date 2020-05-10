@@ -6,8 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
+  margin-top: 40px;
   margin-bottom: 35px;
+  font-family: Nunito;
 }
 
 .search__title {
@@ -15,8 +16,13 @@
   font-weight: 600;
   font-size: 28px;
   line-height: 38px;
+  margin-bottom: 35px;
 }
 
+.search__form {
+  height: 40px;
+  display: flex;
+}
 
 .search__input {
   width: 420px;
@@ -24,6 +30,16 @@
   color: #1a202c;
   line-height: 22px;
   font-size: 16px;
+  border-style: none;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+}
+
+.search__button {
+  width: 40px;
+  height: 40px;
+  background-color: #F6AD55;
+  border-style: none;
+  box-shadow: 0px 5px 10px 0px  rgba(0,0,0,0.2);
 }
 
 .search-results {
@@ -35,7 +51,7 @@
   grid-row-gap: 40px;
   margin-left: auto;
   margin-right: auto;
-  
+  font-family: Nunito;
 }
 
 .results__item {
@@ -53,23 +69,32 @@
   height: 230px;
 }
 
+.item__button {
+  text-decoration: none;
+}
+
 .item__add-button {
   width: 110px;
   height: 28px;
   background-color: #38a169;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button-text {
   color: #ffffff;
-  font-family: Nunito;
   text-align: center;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .item__add-link {
   color: #2b6cb0;
-  font-family: Nunito;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
+  margin-top: 13px;
+  text-decoration: none;
 }
