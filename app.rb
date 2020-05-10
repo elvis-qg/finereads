@@ -30,7 +30,7 @@ helpers do
     hash_results["title"] = response["volumeInfo"]["title"]
     hash_results["authors"] = response["volumeInfo"]["authors"]
     hash_results["despcription"] = response["volumeInfo"]["description"]
-    hash_results["img_url"] = response["volumeInfo"]["imageLinks"]["smallThumbnail"]
+    hash_results["imgage_url"] = response["volumeInfo"]["imageLinks"]["smallThumbnail"]
     availability = response["saleInfo"]["saleability"] 
     availability == "FOR SALE" ? hash_results["retail_price"] = response["saleInfo"]["listPrice"]["amount"] : hash_results["retailPrice"] = availability   
     hash_results 
