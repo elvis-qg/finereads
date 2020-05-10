@@ -1,0 +1,29 @@
+<head>
+  <link rel="stylesheet" href="/styles/books.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/b146b26bd0.js" crossorigin="anonymous"></script>
+</head>
+<div class="my-books">
+  <h1>My books</h1>
+  <table class="table-books">
+    <thead>
+      <td class="table-books-cover">Cover</td> 
+      <td class="table-books-title">Title</td>
+      <td class="table-books-author">Author</td>
+      <td class="table-books-status">Status</td>
+      <td class="table-books-date-added">Date added</td>
+      <td class="table-books-icon"></td>
+      <td class="table-books-icon"></td>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <%= erb :_book_item, locals: { book: book } %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if  @books.empty? %>
+    <p class="table-empty">Add a book!</p>
+  <% end %>
+</div>
