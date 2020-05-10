@@ -87,7 +87,7 @@ get "/books" do
   erb :books
 end
 
-get "/create_books" do
+get "/books/create" do
   id = params["id"]
   status = params["status"]
   book_data = request_book(id)
