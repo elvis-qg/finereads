@@ -1,19 +1,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/b146b26bd0.js" crossorigin="anonymous"></script>
 <div class="search-container">
   <h2 class="search__title">Find your next book to read</h2>
-  <form action="/search" method="get">
-    <input class="search__input" type="text" name="books" placeholder="Search a book...">
-    <input type="button" value="submit">
+  <form class="search__form" action="/search" method="get">
+    <input class="search__input" type="text" name="books" placeholder=" Search a book...">
+    <input class="search__button" type="submit" value=""><i class="fas fa-search"></i>
   </form>
 </div>
 <% if !@books_preview.empty?%>
 <div class="search-results">
   <% @books_preview.each do |id, image_url|%>
     <div class="results__item">
-      <a href="/details?id=<%= "#{id}"%>">
+      <a class="item-image-container" href="/details?id=<%= "#{id}"%>">
         <img class="item__image" src=<%= image_url%> alt="book_preview">
       </a>
-      <a href="/create_books?id=<%= "#{id}"%>&status=Want+to+read">
+      <a class="item__button" href="/create_books?id=<%= "#{id}"%>&status=Want+to+read">
         <div class="item__add-button"><span class="button-text">Want to read</span></div>
       </a>
       <a class="item__add-link" href="/create_books?id=<%= "#{id}"%>&status=Read">Mark as a read</a>     
@@ -25,6 +26,7 @@
 
 
 
-<!--<input hidden name="status" value="want to read">
+<!--<input hidden name="status" value="want to read"> -->
+
 
 

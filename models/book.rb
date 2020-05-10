@@ -10,7 +10,7 @@ class Book < LazyRecord
     @authors = book_data["authors"]
     @image_url = book_data["image_url"]
     @status = book_data["status"]
-    @date_added = Date.today.strftime("%B %d, %Y") # try to do with Time
+    @date_added = Date.today.strftime("%B %d, %Y")
     @notes = ""
   end
 end

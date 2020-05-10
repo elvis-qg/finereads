@@ -1,8 +1,9 @@
-#use Rack::MethodOverride para poder activarlo  modifica un request antes de que lleguen a las rutas
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'http'
 require_relative './models/book.rb'
+
+use Rack::MethodOverride
 
 helpers do
   def request_volume(books)
@@ -12,10 +13,12 @@ helpers do
     response = HTTP.headers(:accept => "application/json").get(endpoint).parse
     hash_results = {}
     items = response["items"]
-    items.each do |item|
-      id_book = item["id"]
-      book_img = item["volumeInfo"]["imageLinks"]["thumbnail"]
-      hash_results[id_book] = book_img    
+    index = 0
+    8.times do
+      id_book = items[index]["id"]
+      img_url = items[index]["volumeInfo"]["imageLinks"]["thumbnail"]
+      hash_results[id_book] = img_url   
+      index += 1 
     end
     hash_results
   end  
@@ -56,6 +59,7 @@ helpers do
       # "saleability": "NOT_FOR_SALE","saleability": "FOR_SALE",
       p book_price      
     array_results = [book_title, book_author,book_description,book_img,book_price,book_currency,book_buyLink]
+
     return array_results
   end
 
@@ -79,10 +83,6 @@ get "/search" do
 end
 
 get "/books" do
-  #books = Book.all
-  #obtener id del libro
-  #id= params[:id]?
-  #@id_libro = Book.find(id)
   @books = Book.all 
   erb :books
 end
@@ -96,15 +96,16 @@ get "/create_books" do
   puts "casi"
   Book.all
   puts "llego"
+  puts book_data
   redirect url("/books")
 end
 
-post "/books/:id/delete" do
-  id = Book.find(params["id"])
-  p params["id"]
-  Book.delete(id)
+Rack::MethodOverride
+delete "/books/:id" do
+  Book.delete(params["id"])
   redirect url("/books")
 end 
+
 get "/books/:id/update" do
   id_update = Book.find(params["id"])
   id_update.status = params["status"]
@@ -114,6 +115,7 @@ get "/books/:id/update" do
   p params["subject"]
   redirect url("/books")
 end 
+
 get "/details" do
   p params["id"]
   @book_detail=request_data(params["id"])
@@ -127,24 +129,5 @@ get "/edit" do
   erb :_edit
 end
 
-
-
-=begin
-
-
-post "/books/:id/delete" do
-  id = params[:id]
-  id = id.to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-
-Rack::Override
-delete "/books/:id" do
-  id = params[:id].to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-=end
 
 

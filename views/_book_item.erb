@@ -9,14 +9,15 @@
 <% status = book.status %>
 <% date_added = book.date_added %>
 <% id = book.id %>
-<td class=><img src="<%= image_url%>" alt="---"></td>
+<td class="table-books-image"><img src="<%= image_url %>" alt="book image"></td>
 <td class="table-books-title"><%= title %></td>
 <td class="table-books-author"><%= authors %></td>
 <td class="table-books-status"><%= status %></td>
 <td class="table-books-date-added"><%= date_added %></td>
 <td class="table-books-icon"><a href="/edit?id=<%= "#{id}" %>"><i class="fas fa-pencil-alt"></i></a></td>
 <td class="table-books-icon">
-  <form method="post" action="/books/<%= id %>/delete"> 
+  <form method="post" action="/books/<%= id %>" >
+    <input type="hidden" name="_method" value="DELETE">
     <button class="table-books-button-delete" type="submit"><i class="fas fa-trash-alt"></i></button>       
   </form>
 </td>
