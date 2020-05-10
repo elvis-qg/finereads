@@ -21,8 +21,8 @@
   <% if price=="Sin precio" %>
     <% pricing = price %>
     <% cart = " " %>
-  <% else %> Buy for
-    <% pricing = "Buy for "+price+currency%>
+  <% else %>
+    <% pricing = "Buy for "+ "#{price}" +currency%>
     <% cart = "fas fa-shopping-cart" %>
   <% end %>
 

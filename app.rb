@@ -30,10 +30,10 @@ helpers do
     hash_results["id"] = response["id"]
     hash_results["title"] = response["volumeInfo"]["title"]
     hash_results["authors"] = response["volumeInfo"]["authors"]
-    hash_results["despcription"] = response["volumeInfo"]["description"]
+    #hash_results["despcription"] = response["volumeInfo"]["description"]
     hash_results["image_url"] = response["volumeInfo"]["imageLinks"]["smallThumbnail"]
-    availability = response["saleInfo"]["saleability"] 
-    availability == "FOR SALE" ? hash_results["retail_price"] = response["saleInfo"]["listPrice"]["amount"] : hash_results["retailPrice"] = availability   
+    #availability = response["saleInfo"]["saleability"] 
+    #availability == "FOR SALE" ? hash_results["retail_price"] = response["saleInfo"]["listPrice"]["amount"] : hash_results["retailPrice"] = availability   
     hash_results 
   end
 
@@ -87,7 +87,7 @@ get "/books" do
   erb :books
 end
 
-get "/create_books" do
+get "/books/create" do
   id = params["id"]
   status = params["status"]
   book_data = request_book(id)
