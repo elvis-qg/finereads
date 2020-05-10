@@ -1,84 +1,8 @@
-require 'sinatra'
-
-
-require "lazyrecord"
-
 #use Rack::MethodOverride para poder activarlo  modifica un request antes de que lleguen a las rutas
-
+require 'sinatra'
 require "sinatra/reloader" if development?
-
-get "/" do 
-  erb :landing_page, :layout => false
-end
-
-
-libros = [
-  libros1 = [
-    {image: "/images/el-vistante.png"},
-    {titulo: "blabla"},
-    {author: "stephen king"},
-    {status: "read"},
-    {date: "May 4th, 2020"}
-  ],
-  libros2 = [
-    {image: "/images/el-visitnte.png"},
-    {titulo: "bla bla"},
-    {author: "phen king"},
-    {status: "reading"},
-    {date: "April 8th, 2020"}
-  ],
-  libros3 = [
-    {image: "/images/el-viitante.png"},
-    {titulo: "bla bla bla"},
-    {author: "king"},
-    {status: "want to read"},
-    {date: "Jan 28th, 2020"}
-  ]
-]
-
-
-get "/books" do
-  #books = Book.all
-  #obtener id del libro
-  #id= params[:id]?
-  #@id_libro = Book.find(id)
-  @books = libros #se tiene que borrar 
-  erb :books
-end
-
-=begin
-class Book < LazyRecord   
-  attr_accessor  :title, :authors, :image_url, :status, :date_added, :notes    
-  def initialize(book_data)     
-    @title = book_data["title"]     
-    @authors = book_data["authors"]     
-    @image_url = book_data["image_url"]     
-    @status = book_data["status"]
-    @date_added = Date.today.strftime("%B %d, %Y") # try to do with Time     
-    @notes = ""   
-  end 
-end
-
-post "/books/:id/delete" do
-  id = params[:id]
-  id = id.to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-
-Rack::Override
-delete "/books/:id" do
-  id = params[:id].to_i
-  Book.delete(id)
-  redirect url("/books")
-end 
-=end
-
-
-
 require 'http'
 require_relative './models/book.rb'
-
 
 helpers do
   def request_volume(books)
@@ -109,6 +33,28 @@ helpers do
     availability == "FOR SALE" ? hash_results["retail_price"] = response["saleInfo"]["listPrice"]["amount"] : hash_results["retailPrice"] = availability   
     hash_results 
   end
+
+  def request_data(idbook)
+    url = "https://www.googleapis.com/books/v1/volumes/"
+    endpoint = url + idbook
+    response = HTTP.get(endpoint).parse
+      book_title = response["volumeInfo"]["title"]
+      book_author = response["volumeInfo"]["authors"].to_s
+      book_description = response["volumeInfo"]["description"]
+      book_img = response["volumeInfo"]["imageLinks"]["thumbnail"]
+      #book_price = response["saleInfo"]["listPrice"]["amount"].to_s
+      #book_currency = response["saleInfo"]["listPrice"]["currencyCode"]
+      #book_buyLink = response["saleInfo"]["buyLink"]
+      #,book_price,book_currency,book_buyLink
+    array_results = [book_title, book_author,book_description,book_img]
+    return array_results
+  end
+
+end
+
+
+get "/" do 
+  erb :landing_page, :layout => false
 end
 
 get "/search" do
@@ -122,7 +68,16 @@ get "/search" do
   erb :search
 end
 
-post "/books" do
+get "/books" do
+  #books = Book.all
+  #obtener id del libro
+  #id= params[:id]?
+  #@id_libro = Book.find(id)
+  @books = Book.all 
+  erb :books
+end
+
+get "/create_books" do
   id = params["id"]
   status = params["status"]
   book_data = request_book(id)
@@ -131,10 +86,47 @@ post "/books" do
   puts "casi"
   Book.all
   puts "llego"
+  redirect url("/books")
+end
+
+post "/books/:id/delete" do
+  id = params[:id]
+  id = id.to_i
+  Book.delete(id)
+  redirect url("/books")
+end 
+
+get "/details" do
+  p params["id"]
+  @book_detail=request_data(params["id"])
+  erb :_details
+end
+
+get "/edit" do
+  p params["id"]
+  @book = Book.find(params["id"])
+  p @book
+  erb :_edit
 end
 
 
-get "/books" do 
-  erb :my_books
-end  
+
+=begin
+
+
+post "/books/:id/delete" do
+  id = params[:id]
+  id = id.to_i
+  Book.delete(id)
+  redirect url("/books")
+end 
+
+Rack::Override
+delete "/books/:id" do
+  id = params[:id].to_i
+  Book.delete(id)
+  redirect url("/books")
+end 
+=end
+
 

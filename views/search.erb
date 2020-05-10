@@ -10,13 +10,13 @@
 <div class="search-results">
   <% @books_preview.each do |id, image_url|%>
     <div class="results__item">
-      <a href="/details">
+      <a href="/details?id=<%= "#{id}"%>">
         <img class="item__image" src=<%= image_url%> alt="book_preview">
       </a>
-      <a href="/books?id=<%= "#{id}"%>&status=Want+to+read">
+      <a href="/create_books?id=<%= "#{id}"%>&status=Want+to+read">
         <div class="item__add-button"><span class="button-text">Want to read</span></div>
       </a>
-      <a class="item__add-link" href="/books?id=<%= "#{id}"%>&status=Read">Mark as a read</a>     
+      <a class="item__add-link" href="/create_books?id=<%= "#{id}"%>&status=Read">Mark as a read</a>     
     </div>
   <% end%>
 </div>
@@ -25,6 +25,6 @@
 
 
 
-<input hidden name="status" value="want to read">
+<!--<input hidden name="status" value="want to read">
 
 
