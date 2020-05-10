@@ -7,7 +7,7 @@
     <div class="edit-description">       
         <h1><%= @book.title %></h1>
         <h3>by <%= @book.authors %></h3>
-        <form method="POST" action="/books" class="edit-form">
+        <form method="GET" action="/books" class="edit-form">
             <label for="status">Reading status</label><br>   
             <select id="status" name="status">
                 <option value="Reading">Reading</option>
