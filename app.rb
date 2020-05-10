@@ -12,10 +12,12 @@ helpers do
     response = HTTP.headers(:accept => "application/json").get(endpoint).parse
     hash_results = {}
     items = response["items"]
-    items.each do |item|
-      id_book = item["id"]
-      book_img = item["volumeInfo"]["imageLinks"]["thumbnail"]
-      hash_results[id_book] = book_img    
+    index = 0
+    8.times do
+      id_book = items[index]["id"]
+      img_url = items[index]["volumeInfo"]["imageLinks"]["thumbnail"]
+      hash_results[id_book] = img_url   
+      index += 1 
     end
     hash_results
   end  

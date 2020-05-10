@@ -10,7 +10,7 @@
 <div class="search-results">
   <% @books_preview.each do |id, image_url|%>
     <div class="results__item">
-      <a href="/details?id=<%= "#{id}"%>">
+      <a class="item-image-container" href="/details?id=<%= "#{id}"%>">
         <img class="item__image" src=<%= image_url%> alt="book_preview">
       </a>
       <a class="item__button" href="/create_books?id=<%= "#{id}"%>&status=Want+to+read">
@@ -25,6 +25,7 @@
 
 
 
-<!--<input hidden name="status" value="want to read">
+<!--<input hidden name="status" value="want to read"> -->
+
 
 
